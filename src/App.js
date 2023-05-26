@@ -17,12 +17,8 @@ function App() {
     <div className='App'>
       <Encabezado/>
       {/* <Login/> */}
-      <Cafes />
-      <Routes>
-         <Route path="/" element={<Cafes setId={setId}/>} />
-         <Route path="/cafes" element={<Cafes setId={setId}/>} />
-         <Route path="/cafes/:cafeId" element={<Cafe id={id}/>} />
-       </Routes>
+         <Cafes setId={setId}/>
+         <Cafe id={id}/>
       <Pie/>
     </div>
   );
