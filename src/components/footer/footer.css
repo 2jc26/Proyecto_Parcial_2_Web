@@ -1,14 +1,10 @@
 .textopie{
-    position: absolute;
-width: 654px;
-height: 23px;
-left: 407px;
-top: 962px;
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 18px;
-line-height: 22px;
-text-align: center;
+    position: relative;
+    top: 10rem;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
 }

@@ -6,19 +6,19 @@ import Login from './components/login/login';
 import Cafes from './components/cafes/cafes';
 import Cafe from './components/cafe/cafe';
 import { Routes, Route } from "react-router-dom";
-const { useEffect, useState } = require("react");
+const { useState } = require("react");
 
 function App() {
 
   const [rol, setRol] = useState('');
-  const [id, setId] = useState('');
+  const [CafeDetail, setCafeDetail] = useState('');
 
   return (
     <div className='App'>
       <Encabezado/>
       {/* <Login/> */}
-         <Cafes setId={setId}/>
-         <Cafe id={id}/>
+         <Cafes setCafeDetail={setCafeDetail}/>
+         {/* <Cafe prop={CafeDetail}/> */}
       <Pie/>
     </div>
   );

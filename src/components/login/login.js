@@ -45,7 +45,7 @@ function Login() {
                                 type="text"
                                 placeholder="Ingresa tu nombre de usuario"
                                 onChange={e => setNombre(e.target.value)}
-                                value={nombre}
+                                value={this.nombre}
                             />
                         </Form.Group>
                         <Form.Group controlId="formBasicPassword">
@@ -54,7 +54,7 @@ function Login() {
                                 type="password"
                                 placeholder="Contraseña"
                                 onChange={e => setPassword(e.target.value)}
-                                value={password}
+                                value={this.password}
                             />
                         </Form.Group>
                         <Button variant="primary" type="submit">

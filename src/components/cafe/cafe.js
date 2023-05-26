@@ -2,18 +2,23 @@ import Card from "react-bootstrap/Card";
 
 const { useEffect, useState } = require("react");
 
-function Cafe(id) {
-
-    const [cafe, setCafe] = useState([]);
+function Cafe(prop) {
+    // {!id ? (
+    //     console.log('No hay id', id.id)
+    //     ): (
+    //       console.log('Hay id', id.id)
+    //     )
+    // }
+    // const [cafe, setCafe] = useState([]);
     
-    useEffect(() => {
-        const URL = `http://localhost:3001/cafes/${id}`;
-        fetch(URL)
-            .then((data) => data.json())
-            .then((data) => {
-                setCafe(data);
-            });
-    }, []);
+    // useEffect(() => {
+    //     const URL = `http://localhost:3001/cafes/${id.id}`;
+    //     fetch(URL)
+    //         .then((data) => data.json())
+    //         .then((data) => {
+    //             setCafe(data);
+    //         });
+    // }, []);
     
 
     return (
@@ -21,19 +26,19 @@ function Cafe(id) {
             <Card.Img
                 style={{ height: "14rem" }}
                 variant="top"
-                src={cafe.imagen}
-                alt={cafe.nombre}
+                src={prop.cafe.imagen}
+                alt={prop.cafe.nombre}
             />
             <Card.Body>
                 <Card.Title>
-                    {cafe.nombre}
+                    {prop.cafe.nombre}
                     <br/>
-                    {cafe.fecha_cultivo}
+                    {prop.cafe.fecha_cultivo}
                 </Card.Title>
                 <Card.Text>
                     <p>Notas</p>
-                    {cafe.notas}
-                    <p> Cultivado a una altura de {cafe.altura} msnm</p>
+                    {prop.cafe.notas}
+                    <p> Cultivado a una altura de {prop.cafe.altura} msnm</p>
                 </Card.Text>
             </Card.Body>
         </Card>
