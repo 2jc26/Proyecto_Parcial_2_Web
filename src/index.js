@@ -4,12 +4,26 @@ import './index.css';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import { IntlProvider } from 'react-intl';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+// Determinar el idioma del navegador
+let userLanguage = navigator.language || navigator.userLanguage;
+// Configurar los mensajes en base al idioma
+let messages;
+
+if (userLanguage.includes("es") || userLanguage.includes("ES")){
+  messages = require('./locales/es.json');
+} else if (userLanguage.includes("en") || userLanguage.includes("EN")) {
+  messages = require('./locales/en.json');
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <IntlProvider locale={userLanguage} messages={messages}>
+      <App lang ={userLanguage}/>
+    </IntlProvider>
   </React.StrictMode>
 );
 

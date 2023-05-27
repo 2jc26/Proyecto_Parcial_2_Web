@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 import './login.css'
+import { FormattedMessage } from "react-intl";
 
 function Login() {
     const [nombre, setNombre] = useState('');
@@ -45,32 +46,32 @@ function Login() {
             <Col lg="2"></Col>
             <Col>
                 <div className="contendor-formulario">
-                    <p>Inicio de sesión</p>
+                    <p><FormattedMessage id="Login"/></p>
                     <Form className="formulario" onSubmit={handleSubmit}>
                         <Form.Group className="formulario_texto">
-                            <Form.Label>Nombre de usuario</Form.Label>
+                            <Form.Label><FormattedMessage id="Username"/></Form.Label>
                             <Form.Control
                                 type="text"
-                                placeholder="Ingresa tu nombre de usuario"
+                                placeholder="Nombre de usuario o Username"
                                 onChange={e => setNombre(e.target.value)}
                                 value={nombre}
                             />
                         </Form.Group>
                         <Form.Group className="formulario_texto">
-                            <Form.Label>Contraseña</Form.Label>
+                            <Form.Label><FormattedMessage id="Password"/></Form.Label>
                             <Form.Control
                                 type="password"
-                                placeholder="Contraseña"
+                                placeholder="Contraseña o Password"
                                 onChange={e => setPassword(e.target.value)}
                                 value={password}
                             />
                         </Form.Group>
                         <br />
                         <Button className="Iniciar" type="submit" style={{ backgroundColor:"#8FA98F", border: "0px", borderRadius: 0, color: "black", fontWeight: 'bold'}}>
-                            Iniciar sesión
+                            <FormattedMessage id="Log In"/>
                         </Button>
                         <Button className="Cancelar" type="reset" style={{ backgroundColor:"#E75D5D", border: "0px", borderRadius: 0, color: "black", fontWeight: 'bold'}}>
-                            Cancelar
+                            <FormattedMessage id="Cancel"/>
                         </Button>
                         {fallo && <p className="error">{error}</p>}
                     </Form>

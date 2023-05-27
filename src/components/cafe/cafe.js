@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { FormattedMessage } from "react-intl";
+import {FormattedDate} from 'react-intl';
 
 function Cafe(cafeId) {
 
@@ -20,7 +22,12 @@ function Cafe(cafeId) {
                 {Cafe.nombre}
             </strong>
             <p class="card-text fecha">
-                {Cafe.fecha_cultivo}
+                <FormattedDate
+                    value={new Date(Cafe.fecha_cultivo)}
+                    year='numeric'
+                    month='numeric'
+                    day='numeric'
+                />
             </p>
             <div className="card-body">
                 <img
@@ -30,14 +37,20 @@ function Cafe(cafeId) {
                     alt={Cafe.nombre}
                 />
                 <p class="card-text">
-                    Notas
-                    <br />
+                    <FormattedMessage id="Notas"/>
+                </p>
+                <p class="card-text">
                     {Cafe.notas}
                 </p>
                 <strong class="card-text">
-                    Cultivado a una altura de
-                    <br />
-                    {Cafe.altura} msnm
+                    <FormattedMessage id="Cultivado"/>
+                </strong>
+                <br />
+                <strong class="card-text">
+                    {Cafe.altura}
+                </strong>{" "}
+                <strong class="card-text">
+                    <FormattedMessage id="msnm"/>
                 </strong>
             </div>
         </div>

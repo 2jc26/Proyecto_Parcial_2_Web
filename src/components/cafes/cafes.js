@@ -1,5 +1,6 @@
 import { Col, Row } from 'react-bootstrap';
 import Cafe from '../cafe/cafe';
+import { FormattedMessage } from 'react-intl';
 const { useEffect, useState } = require("react");
 
 function Cafes() {
@@ -40,9 +41,9 @@ function Cafes() {
                     <thead class="table-dark">
                         <tr>
                             <th>#</th>
-                            <th>Nombre</th>
-                            <th>Tipo</th>
-                            <th>Región</th>
+                            <th><FormattedMessage id="Nombre"/></th>
+                            <th><FormattedMessage id="Tipo"/></th>
+                            <th><FormattedMessage id="Region"/></th>
                         </tr>
                     </thead>
                     <tbody>

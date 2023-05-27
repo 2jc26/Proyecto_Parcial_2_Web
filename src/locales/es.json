@@ -1,0 +1,16 @@
+{
+    "Nombre":"Nombre", 
+    "Tipo":"Tipo", 
+    "Region":"Región", 
+    "Notas":"Notas", 
+    "Cultivado":"Cultivado a una altura de", 
+    "Contactus":"Contactanos: +57 3102105253 - info@elaromamagico.com - @elaromamagico", 
+    "Login":"Inicio de sesión", 
+    "Username":"Nombre de usuario", 
+    "EnterUser":"Ingresa tu nombre de usuario", 
+    "Password":"Contraseña", 
+    "password": "password",
+    "Log In":"Iniciar sesión",
+    "Cancel": "Cancelar",
+    "msnm": "msnm"
+}
