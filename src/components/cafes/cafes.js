@@ -1,8 +1,12 @@
+import { Col, Row } from 'react-bootstrap';
+import Cafe from '../cafe/cafe';
 const { useEffect, useState } = require("react");
 
-function Cafes({ setCafeDetail }) {
+function Cafes() {
+    
     const [cafes, setCafes] = useState([]);
-    const [Cafe, setCafe] = useState([]);
+    const [cofeeId, setId] = useState(undefined)
+
     useEffect(() => {
         const URL =
             "http://localhost:3001/cafes";
@@ -14,36 +18,49 @@ function Cafes({ setCafeDetail }) {
     }, []);
 
     const handleRowClick = (id) => {
-        const URL = `http://localhost:3001/cafes/${id}`;
-        fetch(URL)
-            .then((data) => data.json())
-            .then((data) => {
-                setCafe(data);
-            });
-        setCafeDetail([Cafe]);
+        if (cofeeId === id) {
+            setId(undefined);
+        } else {
+            setId(id);
+        }
+    }
+
+    const mostrarDetalle = () => {
+        if (cofeeId!== undefined) {
+            return <Cafe cafeId={cofeeId} />
+        } else {
+            return null
+        }
     }
 
     return (
-        <table className="table">
-            <thead class="table-dark">
-                <tr>
-                    <th>#</th>
-                    <th>Nombre</th>
-                    <th>Tipo</th>
-                    <th>Región</th>
-                </tr>
-            </thead>
-            <tbody>
-                {cafes.map((item) => (
-                    <tr key={item.id} onClick={() => handleRowClick(item.id)}>
-                        <td>{item.id}</td>
-                        <td>{item.nombre}</td>
-                        <td>{item.tipo}</td>
-                        <td>{item.region}</td>
-                    </tr>
-                ))}
-            </tbody>
-        </table>
+        <Row>
+            <Col lg="8">
+                <table className="table">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Tipo</th>
+                            <th>Región</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {cafes.map((item) => (
+                            <tr key={item.id} onClick={() => handleRowClick(item.id)}>
+                                <td>{item.id}</td>
+                                <td>{item.nombre}</td>
+                                <td>{item.tipo}</td>
+                                <td>{item.region}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </Col>
+            <Col lg="4">
+                {mostrarDetalle()}
+            </Col>
+        </Row>
     );
 }
 

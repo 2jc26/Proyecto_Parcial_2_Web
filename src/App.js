@@ -1,39 +1,33 @@
-import React from 'react';
-import './App.css';
+import React, { useState } from "react";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Encabezado from './components/header/header';
 import Pie from './components/footer/footer';
 import Login from './components/login/login';
 import Cafes from './components/cafes/cafes';
-import Cafe from './components/cafe/cafe';
-import { Routes, Route } from "react-router-dom";
-import { Col, Row } from 'react-bootstrap';
-const { useState } = require("react");
+import './App.css';
 
 function App() {
 
   const [rol, setRol] = useState('');
-  const [CafeDetail, setCafeDetail] = useState({});
-  console.log(CafeDetail)
+
   return (
-    <div className='App'>
+    <div className="App">
       <Encabezado />
-      {/* <Login setRol={setRol}/> */}
-      <Row>
-        <Col lg="8">
-          <Cafes setCafeDetail={setCafeDetail} />
-        </Col>
-        {CafeDetail.length>0 ? (
-          <Col>
-            <Cafe cafe={CafeDetail[0]} />
-          </Col>
-        ) :
-          (
-            <Col></Col>
-          )
-        }
-      </Row>
+      {/* <Route path="/" element={<Login setRol={setRol} />} /> */}
+      <BrowserRouter>
+        <Routes>
+          {/* {!rol ? (
+            <Route path="/" element={<Cafes />} />
+          ) :
+            (
+              <Route path="/login" element={<Login setRol={setRol} />} />
+            )
+          } */}
+          <Route path="/" element={<Cafes />} />
+        </Routes>
+      </BrowserRouter>
       <Pie />
-    </div >
+    </div>
   );
 }
 
