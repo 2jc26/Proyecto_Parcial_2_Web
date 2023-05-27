@@ -4,7 +4,8 @@
 }
 
 .texto {
-    font-family: 'Indie Flower';
+    font-family: 'Indie Flower', cursive;
+    font-weight: bolder;
     font-style: normal;
     font-weight: 400;
     font-size: 36px;

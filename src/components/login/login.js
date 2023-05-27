@@ -1,72 +1,83 @@
 import React, { useState } from "react";
-import { Container, Form, Button, Row, Col } from "react-bootstrap";
+import { Form, Button, Row, Col } from "react-bootstrap";
+import { useNavigate } from 'react-router-dom';
+import './login.css'
 
-function Login({ setRol }) {
+function Login() {
     const [nombre, setNombre] = useState('');
     const [password, setPassword] = useState('');
     const [fallo, setFallo] = useState(false);
     const [error, setError] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (nombre.trim() === '' || password.trim() === '') {
             setFallo(true);
+            setError("Campos vacios");
+            return
         } else {
             let config = {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ nombre, password })
+                body: JSON.stringify({ "login":nombre, "password":password })
             }
 
             let res = await fetch('http://localhost:3001/login', config);
             let data = await res.json();
+            console.log(data)
             if (data.status === 'success') {
-                setRol("admin");
+                navigate("/cafes")
             } else {
                 setFallo(true);
+                setError("Error de autenticación. Revise sus credenciales");
+                return
             }
-            setError(data.message);
         }
         setFallo(false);
-        setError("Campos vacios");
     }
 
     return (
-        <Container>
-            <Row>
-                <Col>
-                    <Form onSubmit={handleSubmit}>
-                        <Form.Group controlId="formBasicEmail">
+
+        <Row>
+            <Col lg="2"></Col>
+            <Col>
+                <div className="contendor-formulario">
+                    <p>Inicio de sesión</p>
+                    <Form className="formulario" onSubmit={handleSubmit}>
+                        <Form.Group className="formulario_texto">
                             <Form.Label>Nombre de usuario</Form.Label>
                             <Form.Control
                                 type="text"
                                 placeholder="Ingresa tu nombre de usuario"
                                 onChange={e => setNombre(e.target.value)}
-                                value={this.nombre}
+                                value={nombre}
                             />
                         </Form.Group>
-                        <Form.Group controlId="formBasicPassword">
+                        <Form.Group className="formulario_texto">
                             <Form.Label>Contraseña</Form.Label>
                             <Form.Control
                                 type="password"
                                 placeholder="Contraseña"
                                 onChange={e => setPassword(e.target.value)}
-                                value={this.password}
+                                value={password}
                             />
                         </Form.Group>
-                        <Button variant="primary" type="submit">
+                        <br />
+                        <Button className="Iniciar" type="submit" style={{ backgroundColor:"#8FA98F", border: "0px", borderRadius: 0, color: "black", fontWeight: 'bold'}}>
                             Iniciar sesión
                         </Button>
-                        <Button variant="primary" type="reset">
+                        <Button className="Cancelar" type="reset" style={{ backgroundColor:"#E75D5D", border: "0px", borderRadius: 0, color: "black", fontWeight: 'bold'}}>
                             Cancelar
                         </Button>
+                        {fallo && <p className="error">{error}</p>}
                     </Form>
-                    {fallo && <p className="alert alert-danger">{error}</p>}
-                </Col>
-            </Row>
-        </Container>
+                </div>
+            </Col>
+            <Col lg="2"></Col>
+        </Row>
     )
 }
 

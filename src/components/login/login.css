@@ -1,0 +1,45 @@
+.contendor-formulario {
+    text-align: left
+}
+
+.formulario_texto {
+    margin-top: 1rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    text-align: left;
+    font-weight: bold;
+}
+
+.formulario {
+    background-color: #E5E5E5;
+    border: 1px solid black;
+}
+
+.error {
+    color: #CD3232;
+    text-align: left !important;
+    font-family: 'Inter';
+    font-style: normal;
+    margin-left: 5rem;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.Iniciar {
+    margin-bottom: 1rem;
+    margin-left: 5rem;
+    margin-right: 14rem;
+    width: 253px;
+    height: 53px;
+    left: 456px;
+    top: 771px;
+}
+
+.Cancelar {
+    margin-bottom: 1rem;
+    width: 253px;
+    height: 53px;
+    left: 456px;
+    top: 771px;
+}
