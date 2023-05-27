@@ -6,21 +6,34 @@ import Login from './components/login/login';
 import Cafes from './components/cafes/cafes';
 import Cafe from './components/cafe/cafe';
 import { Routes, Route } from "react-router-dom";
+import { Col, Row } from 'react-bootstrap';
 const { useState } = require("react");
 
 function App() {
 
   const [rol, setRol] = useState('');
-  const [CafeDetail, setCafeDetail] = useState('');
-
+  const [CafeDetail, setCafeDetail] = useState({});
+  console.log(CafeDetail)
   return (
     <div className='App'>
-      <Encabezado/>
-      {/* <Login/> */}
-         <Cafes setCafeDetail={setCafeDetail}/>
-         {/* <Cafe prop={CafeDetail}/> */}
-      <Pie/>
-    </div>
+      <Encabezado />
+      {/* <Login setRol={setRol}/> */}
+      <Row>
+        <Col lg="8">
+          <Cafes setCafeDetail={setCafeDetail} />
+        </Col>
+        {CafeDetail.length>0 ? (
+          <Col>
+            <Cafe cafe={CafeDetail[0]} />
+          </Col>
+        ) :
+          (
+            <Col></Col>
+          )
+        }
+      </Row>
+      <Pie />
+    </div >
   );
 }
 

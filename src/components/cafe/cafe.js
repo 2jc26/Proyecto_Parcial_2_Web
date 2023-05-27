@@ -1,47 +1,32 @@
-import Card from "react-bootstrap/Card";
-
-const { useEffect, useState } = require("react");
-
-function Cafe(prop) {
-    // {!id ? (
-    //     console.log('No hay id', id.id)
-    //     ): (
-    //       console.log('Hay id', id.id)
-    //     )
-    // }
-    // const [cafe, setCafe] = useState([]);
-    
-    // useEffect(() => {
-    //     const URL = `http://localhost:3001/cafes/${id.id}`;
-    //     fetch(URL)
-    //         .then((data) => data.json())
-    //         .then((data) => {
-    //             setCafe(data);
-    //         });
-    // }, []);
-    
+function Cafe(cafe) {
 
     return (
-        <Card style={{ width: "18rem", height: "24rem" }} className="mb-3">
-            <Card.Img
-                style={{ height: "14rem" }}
-                variant="top"
-                src={prop.cafe.imagen}
-                alt={prop.cafe.nombre}
-            />
-            <Card.Body>
-                <Card.Title>
-                    {prop.cafe.nombre}
-                    <br/>
-                    {prop.cafe.fecha_cultivo}
-                </Card.Title>
-                <Card.Text>
-                    <p>Notas</p>
-                    {prop.cafe.notas}
-                    <p> Cultivado a una altura de {prop.cafe.altura} msnm</p>
-                </Card.Text>
-            </Card.Body>
-        </Card>
+        <div className="card mb-3" style={{ width: "311px", backgroundColor: "#E0BBBB33", marginLeft: "2rem" }}>
+            <strong className="card-title strong">
+                {cafe.cafe.nombre}
+            </strong>
+            <p class="card-text fecha">
+                {cafe.cafe.fecha_cultivo}
+            </p>
+            <div className="card-body">
+                <img
+                    style={{ width: "116px", height: "150px" }}
+                    variant="top"
+                    src={cafe.cafe.imagen}
+                    alt={cafe.cafe.nombre}
+                />
+                <p class="card-text">
+                    Notas
+                    <br />
+                    {cafe.cafe.notas}
+                </p>
+                <strong class="card-text">
+                    Cultivado a una altura de
+                    <br />
+                    {cafe.cafe.altura} msnm
+                </strong>
+            </div>
+        </div>
     );
 }
 

@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { Container, Form, Button, Row, Col } from "react-bootstrap";
 
-function Login() {
+function Login({ setRol }) {
     const [nombre, setNombre] = useState('');
     const [password, setPassword] = useState('');
     const [fallo, setFallo] = useState(false);
     const [error, setError] = useState('');
-    const [rol, setRol] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
